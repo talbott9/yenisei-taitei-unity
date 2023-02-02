@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5796609748897128449}
   - component: {fileID: 3046023721152689386}
+  - component: {fileID: -5795773493029003331}
+  - component: {fileID: -1621377470673680997}
   m_Layer: 0
   m_Name: Projectile2
   m_TagString: Untagged
@@ -84,3 +86,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-5795773493029003331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573185308803144729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b77796e54b27caf5ab1d54dfc7047877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotType: 2
+  speed: 3.6
+  acc: 0.06
+  targetX: 0
+  targetY: 0
+  gravity: 0
+  projectile41Prefab: {fileID: 0}
+--- !u!61 &-1621377470673680997
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573185308803144729}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.25, y: 0.25}
+    newSize: {x: 0.25, y: 0.25}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 0.25}
+  m_EdgeRadius: 0

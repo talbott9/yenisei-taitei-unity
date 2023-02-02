@@ -27,4 +27,13 @@ public class HGArrow : MonoBehaviour
 	if(posX < -8 || posX > 8 || posY > 6 || posY < -4) //8 = screen width
 		Destroy(this.gameObject);
     }
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+	    if (coll.gameObject.name == "enemy1")
+	    {
+		Enemy1 enemy = coll.GetComponent<Enemy1>();
+		enemy.takeDamage();
+		Destroy(this.gameObject);
+	    }
+    }
 }
