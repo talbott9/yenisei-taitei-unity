@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Hildegarde : MonoBehaviour
 {
@@ -71,6 +72,9 @@ public class Hildegarde : MonoBehaviour
 		    }
 	    } else {
 		    anim.SetBool("death", death);
+	    }
+	    if(Input.GetKeyDown(KeyCode.R)) {
+		    SceneManager.LoadScene("Scene1");
 	    }
     }
 }

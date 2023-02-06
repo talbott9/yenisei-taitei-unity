@@ -97,6 +97,9 @@ public class ProjectileMove : MonoBehaviour
 	    } else {
 		    for(int i = 0; i < 10; i ++) {
 			    projectile = Instantiate(projectile41Prefab) as GameObject;
+			    ProjectileMove projectile41 = projectile.GetComponent<ProjectileMove>();
+			    projectile41.targetX = this.targetX;
+			    projectile41.targetY = this.targetY;
 			    this.transform.Translate(dx * Time.deltaTime, dy * Time.deltaTime, 0);
 			    posX = this.transform.position.x; posY = this.transform.position.y;
 			    projectile.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z - 0.1f);

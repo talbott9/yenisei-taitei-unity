@@ -93,6 +93,7 @@ public class Enemy1 : MonoBehaviour
 	    posX = defaultPosX; posY = defaultPosY;
 	    randX = 0.0f;
 	    randY = 0.0f;
+	    pattern = Random.Range(1, 5);
     }
 
     // Update is called once per frame
@@ -151,38 +152,40 @@ public class Enemy1 : MonoBehaviour
 				}
 				break;
 			case 2: moveToXY(0f, 0f, 6.0f);
-				shootTicks += Time.deltaTime;
-			       	shootTicks1 += Time.deltaTime;
-				//Shot draws a line through the screen and then returns with the same motion
-				if(!shootReturn) {
-					moveThreshold += 5; 
-					if(moveThreshold/100.0f >= 6)
-						shootReturn = true;
-				} else {
-					moveThreshold -= 5;
-					if(moveThreshold/100.0f <= -6)
-						shootReturn = false;
-				}
-				if(shotCount < 5 && shootTicks1 >= projectile21Interval) {
-					projectile1 = Instantiate(projectile21Prefab) as GameObject;
-					projectile1.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z - 0.1f);
-					shootTicks1 = 0;
+				if(this.transform.position.x < 1 && this.transform.position.x > -1) {
+					shootTicks += Time.deltaTime;
+					shootTicks1 += Time.deltaTime;
+					//Shot draws a line through the screen and then returns with the same motion
+					if(!shootReturn) {
+						moveThreshold += 5; 
+						if(moveThreshold/100.0f >= 6)
+							shootReturn = true;
+					} else {
+						moveThreshold -= 5;
+						if(moveThreshold/100.0f <= -6)
+							shootReturn = false;
+					}
+					if(shotCount < 5 && shootTicks1 >= projectile21Interval) {
+						projectile1 = Instantiate(projectile21Prefab) as GameObject;
+						projectile1.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z - 0.1f);
+						shootTicks1 = 0;
 
-					shotCount++;
+						shotCount++;
+					}
+					if(projectile1 == null)
+						shotCount = 0;
+					if(shootTicks >= projectile2Interval) {
+						shootTicks = 0;
+						projectile = Instantiate(projectile2Prefab) as GameObject;
+						ProjectileMove projectile2 = projectile.GetComponent<ProjectileMove>();
+						projectile2.targetX = moveThreshold/100.0f;
+						projectile.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z - 0.1f);
+						projectile = Instantiate(projectile2Prefab) as GameObject;
+						projectile2 = projectile.GetComponent<ProjectileMove>();
+						projectile2.targetX = -moveThreshold/100.0f;
+						projectile.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z - 0.1f);
+			}
 				}
-				if(projectile1 == null)
-					shotCount = 0;
-				if(shootTicks >= projectile2Interval) {
-					shootTicks = 0;
-					projectile = Instantiate(projectile2Prefab) as GameObject;
-					ProjectileMove projectile2 = projectile.GetComponent<ProjectileMove>();
-					projectile2.targetX = moveThreshold/100.0f;
-					projectile.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z - 0.1f);
-					projectile = Instantiate(projectile2Prefab) as GameObject;
-					projectile2 = projectile.GetComponent<ProjectileMove>();
-					projectile2.targetX = -moveThreshold/100.0f;
-					projectile.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z - 0.1f);
-		}
 				break;
 			case 3: moveToXY(0, -1.5f, 6.0f);
 				shootTicks += Time.deltaTime; 
